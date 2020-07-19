@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { register } from './UserFunctions'
-import { FirebaseContext } from '../Firebase'
 
 
 class Register extends Component {
     constructor() {
         super()
         this.state = {
-            name: '',
+            firstname: '',
+            lastname:'',
             email: '',
             password: '',
-            selectTopic: 'aws',
+            role: 'student',
             errors: []
         }
         this.onChange = this.onChange.bind(this)
@@ -30,10 +30,11 @@ class Register extends Component {
         }
         else {
             const user = {
-                name: this.state.name,
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
                 email: this.state.email,
                 password: this.state.password,
-                selectTopic: this.state.selectTopic
+                role: this.state.role
             }
             register(user).then(res => {
                 console.log(res)
@@ -72,14 +73,21 @@ class Register extends Component {
                                             Please Register
                             </h1>
                                         <div className="form-group">
-                                            <label htmlFor="name">Name</label>
+                                            <label htmlFor="firstname">First Name</label>
                                             <input type="text" className="form-control"
-                                                name="name"
-                                                placeholder="Enter name"
-                                                value={this.state.name}
+                                                name="firstname"
+                                                placeholder="Enter first name"
+                                                value={this.state.firstname}
                                                 onChange={this.onChange} />
                                         </div>
-
+                                        <div className="form-group">
+                                            <label htmlFor="lastname">Last Name</label>
+                                            <input type="text" className="form-control"
+                                                name="lastname"
+                                                placeholder="Enter last name"
+                                                value={this.state.lastname}
+                                                onChange={this.onChange} />
+                                        </div>
                                         <div className="form-group">
                                             <label htmlFor="email">Email Address</label>
                                             <input type="email" className="form-control"
@@ -89,7 +97,7 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="email">Password</label>
+                                            <label htmlFor="password">Password</label>
                                             <input type="password" className="form-control"
                                                 name="password"
                                                 placeholder="Enter password"
@@ -97,14 +105,21 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label>selectTopic</label>
-                                            <select defaultValue={this.state.selectTopic} onChange={this.onChange} className="form-control">
-                                                <option value="aws">AWS</option>
-                                                <option value="gcp">GCP</option>
-                                                <option value="azure">Azure</option>
+                                            <label htmlFor="confirmpassword">Confirm Password</label>
+                                            <input type="password" className="form-control"
+                                                name="confirmpassword"
+                                                placeholder="Re-enter password"
+                                                value={this.state.confirmpassword}
+                                                onChange={this.onChange} />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Role</label>
+                                            <select defaultValue={this.state.role} onChange={this.onChange} className="form-control">
+                                                <option value="aws">student</option>
+                                                <option value="staff">staff</option>
                                             </select>
-                                            {errors.selectTopic &&
-                                                <span className='error'>{errors.selectTopic}</span>}
+                                            {errors.role &&
+                                                <span className='error'>{errors.role}</span>}
                                         </div>
                                         <button type="submit"
                                             className="btn btn-md btn-primary btn-block" onSubmit={this.onSubmit}>
