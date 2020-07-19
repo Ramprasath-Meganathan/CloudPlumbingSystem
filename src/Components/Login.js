@@ -48,15 +48,12 @@ class Login extends Component {
     render() {
         const { errors } = this.state;
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-5 mt-5 mx-auto">
+                    <div className="login">
                         <form noValidate onSubmit={this.onSubmit}>
-                            <h1 className="h3 mb-3 front-weight-normal">
+                            <h2 className="h3 mb-3 font-weight-normal text-center">
                                 Please sign in
-                            </h1>
+                            </h2>
                             <div className="form-group ">
-                                <label>Email Address</label>
                                 <input type="email" className="form-control"
                                     name="email"
                                     placeholder="Enter email"
@@ -64,7 +61,6 @@ class Login extends Component {
                                     onChange={this.onChange} />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
                                 <input type="password" className="form-control"
                                     name="password"
                                     placeholder="Enter password"
@@ -80,8 +76,6 @@ class Login extends Component {
                             ))}
                         </form>
                     </div>
-                </div>
-            </div>
         )
     }
 }

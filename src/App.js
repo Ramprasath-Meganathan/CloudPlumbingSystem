@@ -7,7 +7,7 @@ import Login from './Components/Login'
 import Profile from './Components/Profile'
 import Register from './Components/Register'
 import Footer from './Components/Footer'
-
+import SecurityQuestions from './Components/SecurityQuestions'
 
 class App extends Component {
   render(){
@@ -20,6 +20,7 @@ class App extends Component {
          <Route exact path="/register" component={Register}/>
          <Route exact path="/login" component={Login}/>
          <Route exact path="/profile" component={Profile}/>
+         <Route exact path="/securityquestions" component={SecurityQuestions}/>
        </div>
        <Footer/>
      </div>

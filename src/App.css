@@ -52,3 +52,48 @@
   justify-content: center;
   align-items: center;
 }
+
+.register {
+  width: 480px;
+  margin: 80px auto;
+}
+.register form {
+  margin-bottom: 15px;
+  background: #f7f7f7;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+}
+
+.login {
+  width: 480px;
+  margin: 80px auto;
+}
+.login form {
+  margin-bottom: 15px;
+  background: #f7f7f7;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+}
+
+@media all and (max-width:480px)
+{
+  .feedback {
+    width: 330px;
+    margin: 55px auto;
+  }
+  .footerStyle
+  {
+    font-size: 9px;
+  }
+
+  .error {
+    color:red;
+    font-size: 10pt;
+  }
+  
+  .login > p > p{
+    color:red;
+    font-size: 10pt;
+  }
+  
+}

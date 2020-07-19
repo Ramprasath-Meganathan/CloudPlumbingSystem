@@ -10,6 +10,7 @@ class Register extends Component {
             lastname:'',
             email: '',
             password: '',
+            confirmpassword:'',
             role: 'student',
             errors: []
         }
@@ -24,37 +25,47 @@ class Register extends Component {
 
     onSubmit(e) {
         e.preventDefault()
-        const errors = validate(this.state.name, this.state.email, this.state.password)
+        const errors = validate(this.state.firstname,this.state.lastname, this.state.email, this.state.password,this.state.confirmpassword)
         if (errors.length > 0) {
             this.setState({ errors });
+            setTimeout(() => { this.setState({ errors: [] }) }, 3000);
         }
         else {
-            const user = {
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
-                email: this.state.email,
-                password: this.state.password,
-                role: this.state.role
-            }
-            register(user).then(res => {
-                console.log(res)
-                if (res === 'User already registered') {
-                    errors.push(res)
-                    this.setState({ errors });
-                }
-                else if (res === undefined) {
-                    errors.push('User already registered')
-                    this.setState({ errors });
-                }
-                else {
-                    window.alert('User Registered successfully')
-                    this.props.history.push('/')
-                }
-            }).catch(err => {
-                if (err) {
-                    errors.email('something wrong with the registration')
-                }
-            })
+            window.alert('success')
+            this.state.firstname=''
+            this.state.lastname=''
+            this.state.email=''
+            this.state.password=''
+            this.state.confirmpassword=''
+            this.state.role='student'
+            this.errors = [];
+            this.setState({ errors });
+            // const user = {
+            //     firstname: this.state.firstname,
+            //     lastname: this.state.lastname,
+            //     email: this.state.email,
+            //     password: this.state.password,
+            //     role: this.state.role
+            // }
+            // register(user).then(res => {
+            //     console.log(res)
+            //     if (res === 'User already registered') {
+            //         errors.push(res)
+            //         this.setState({ errors });
+            //     }
+            //     else if (res === undefined) {
+            //         errors.push('User already registered')
+            //         this.setState({ errors });
+            //     }
+            //     else {
+            //         window.alert('User Registered successfully')
+            //         this.props.history.push('/')
+            //     }
+            // }).catch(err => {
+            //     if (err) {
+            //         errors.email('something wrong with the registration')
+            //     }
+            // })
         }
 
     }
@@ -64,16 +75,12 @@ class Register extends Component {
     {
         const { errors } = this.state;
                     return (
-
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-5 mt-5 mx-auto">
+                                <div className="register">
                                     <form noValidate onSubmit={this.onSubmit}>
-                                        <h1 className="h3 mb-3 front-weight-normal">
+                                        <h2 className="h3 mb-3 font-weight-normal text-center">
                                             Please Register
-                            </h1>
+                                         </h2>
                                         <div className="form-group">
-                                            <label htmlFor="firstname">First Name</label>
                                             <input type="text" className="form-control"
                                                 name="firstname"
                                                 placeholder="Enter first name"
@@ -81,7 +88,6 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="lastname">Last Name</label>
                                             <input type="text" className="form-control"
                                                 name="lastname"
                                                 placeholder="Enter last name"
@@ -89,7 +95,6 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="email">Email Address</label>
                                             <input type="email" className="form-control"
                                                 name="email"
                                                 placeholder="Enter email"
@@ -97,7 +102,6 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="password">Password</label>
                                             <input type="password" className="form-control"
                                                 name="password"
                                                 placeholder="Enter password"
@@ -105,7 +109,6 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="confirmpassword">Confirm Password</label>
                                             <input type="password" className="form-control"
                                                 name="confirmpassword"
                                                 placeholder="Re-enter password"
@@ -113,17 +116,14 @@ class Register extends Component {
                                                 onChange={this.onChange} />
                                         </div>
                                         <div className="form-group">
-                                            <label>Role</label>
                                             <select defaultValue={this.state.role} onChange={this.onChange} className="form-control">
-                                                <option value="aws">student</option>
+                                                <option value="student">student</option>
                                                 <option value="staff">staff</option>
                                             </select>
-                                            {errors.role &&
-                                                <span className='error'>{errors.role}</span>}
                                         </div>
                                         <button type="submit"
                                             className="btn btn-md btn-primary btn-block" onSubmit={this.onSubmit}>
-                                            Register
+                                            Next
                             </button>
                                         <br />
                                         {errors.map(error => (
@@ -131,25 +131,30 @@ class Register extends Component {
                                         ))}
                                     </form>
                                 </div>
-                            </div>
-                        </div>
                     )
                 }
     }
 
 
-    const validate = (name, email, comment) => {
+    const validate = (firstname,lastname, email, password,confirmpassword) => {
         const errors = [];
         const validEmailRegex =
             RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-        if (name.length === 0) {
-            errors.push('name is required')
+        if (firstname.length === 0) {
+            errors.push('first name is required')
+        }
+        if (lastname.length === 0) {
+            errors.push('last name is required')
         }
         if (!validEmailRegex.test(email)) {
             errors.push("Email id is not valid")
         }
-        if (comment.length < 1) {
+        if (password < 1) {
             errors.push("Password should be atleast 6 characters long");
+        }
+        if (password!=confirmpassword) {
+            errors.push("Password and confirm password should match");
+           
         }
         return errors;
     }
