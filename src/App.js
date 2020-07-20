@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import './App.css';
-import Navbar from './Components/Navbar'
-import Home from './Components/Home'
+import TopNavBar from './Components/Navbar/Navbar'
+import Home from './Components/LandingPage/Home';
 import Login from './Components/Login'
 import Profile from './Components/Profile'
 import Register from './Components/Register'
-import Footer from './Components/Footer'
+import FooterPage from './Components/Footer'
 import SecurityQuestions from './Components/SecurityQuestions'
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
   return (
    <Router>
      <div className="App">
-       <Navbar/>
+       <TopNavBar />
        <Route exact path="/" component={Home}/>
        <div className="Container">
          <Route exact path="/register" component={Register}/>
@@ -22,7 +22,7 @@ class App extends Component {
          <Route exact path="/profile" component={Profile}/>
          <Route exact path="/securityquestions" component={SecurityQuestions}/>
        </div>
-       <Footer/>
+       <FooterPage />
      </div>
    </Router>
   );

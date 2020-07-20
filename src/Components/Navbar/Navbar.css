@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 100vh !important;
+    z-index: 100;
+    padding: 48px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+a {
+    text-decoration: none;
+  }
+
+a:hover {
+    text-decoration: none;
+}
+#sidebar-wrapper{
+    min-height: 100vh !important;
+    width: 100vw;
+    margin-left: -1rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#page-content-wrapper {
+    min-width: 0;
+    width: 100;
+}
+.MuiToolbar-regular {
+    max-height: 64px;
+}
+
+.MuiPaper-root .MuiDrawer-paper .MuiDrawer-paperAnchorLeft .MuiPaper-elevation16 {
+    background: black;
+} 
+
+.nav__header {
+    display: inline-flex;
+    justify-content: space-evenly;
+    padding: 0.5em;
+}
+
+.MuiSvgIcon-root {
+    color: white;
+}
+
+.logo__heading {
+    margin-top: 8px;
+    margin-left: 0.2%;
+}
+
+.nav__header .nav__bar-title {
+    margin-top: 11px;
+    color: white;
+}
+
+.nav__main-items {
+    list-style: none;
+    font-size: 1.3rem;
+    padding: 1;
+    font-weight: 500;
+    border-bottom: 1px white;
+}
+
+.nav__main-item {
+    margin-bottom: 2rem;
+}
+
+.nav__main-item > a {
+    color: #cdecf3; 
+}
+
+.nav__bar-link {
+    text-decoration: none;
+    color: white;
+    size: 2rem;
+    margin-right: 10px;
+}
+
+.nav__bar-link:hover {
+    text-decoration: none;
+    color: #cdecf3
+}
+
+.nav__main-item > a:hover {
+    color: #275c68;
+    text-decoration: none;
+}
+
+.MuiDivider-root {
+    background-color: white;
+    margin-left: 2px;
+    margin-right: 2px;
+}
