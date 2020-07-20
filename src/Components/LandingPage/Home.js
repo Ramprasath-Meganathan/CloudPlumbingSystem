@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import OnlineSupportBot from "../onlineSupportLex/onlineSupport"; 
 
 import "./Home.css";
 class Home extends Component {
@@ -10,7 +11,9 @@ class Home extends Component {
         this.state = {
           toggleStateA: false
         };
-      }
+    }
+
+    
     render() {
         return (
             <div id="main-container">
@@ -49,11 +52,13 @@ class Home extends Component {
                         </MDBRow>
                     </MDBContainer>
                 </section>
+                <div style = {{bottom: '0px',zIndex: '1', right: '0px', position: 'fixed' }}>
+                    <OnlineSupportBot />
+                </div>
                 {/* <div className="jumbotron mt-5">
                     <div className="col-sm-8-mx-auto">
                         <h1 className="text-center">Welcome to Serverless Cloud Plumbing System</h1>
                     </div> */}
-
             </div>
         )
     }

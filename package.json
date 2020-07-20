@@ -8,6 +8,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "aws-amplify": "^3.0.20",
+    "aws-amplify-react": "^4.1.19",
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
     "bootstrap": "^4.5.0",
