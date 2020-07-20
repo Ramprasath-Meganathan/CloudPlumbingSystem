@@ -48,7 +48,7 @@ class Login extends Component {
     render() {
         const { errors } = this.state;
         return (
-                    <div className="login">
+                    <div className="paneldesign">
                         <form noValidate onSubmit={this.onSubmit}>
                             <h2 className="h3 mb-3 font-weight-normal text-center">
                                 Please sign in

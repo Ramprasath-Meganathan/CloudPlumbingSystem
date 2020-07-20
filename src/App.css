@@ -53,31 +53,27 @@
   align-items: center;
 }
 
-.register {
+.paneldesign {
   width: 480px;
   margin: 80px auto;
 }
-.register form {
+.paneldesign form {
   margin-bottom: 15px;
   background: #f7f7f7;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   padding: 30px;
 }
-
-.login {
-  width: 480px;
-  margin: 80px auto;
+.paneldesign h2 {
+  margin: 0 0 20px;
 }
-.login form {
-  margin-bottom: 15px;
-  background: #f7f7f7;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  padding: 30px;
+.form-control, .button {
+  min-height: 38px;
+  border-radius: 2px;
 }
 
 @media all and (max-width:480px)
 {
-  .feedback {
+  .paneldesign {
     width: 330px;
     margin: 55px auto;
   }
@@ -91,9 +87,13 @@
     font-size: 10pt;
   }
   
-  .login > p > p{
-    color:red;
-    font-size: 10pt;
-  }
+ 
   
+}
+.paneldesign > p > p{
+  color:red;
+  font-size: 10pt;
+}
+.footerStyle{
+  font-size:10px
 }
