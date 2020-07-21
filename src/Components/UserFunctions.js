@@ -3,11 +3,18 @@ import axios from 'axios'
 
 
 export const register = newUser => {
-    return axios.post('http://k=localhost:3000', {
-        name: newUser.name,
+    return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions/add', {
+        firstname: newUser.firstname,
+        lastname: newUser.lastname,
         email: newUser.email,
         password: newUser.password,
-        selectTopic: newUser.selectTopic
+        role: newUser.role,
+        question1: newUser.question1,
+        question2: newUser.question2,
+        question3: newUser.question3,
+        answer1: newUser.answer1,
+        answer2: newUser.answer2,
+        answer3: newUser.answer3
     }).then(res => {
         return res.data
     }).catch(err => {

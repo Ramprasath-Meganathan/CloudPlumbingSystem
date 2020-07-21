@@ -11,9 +11,9 @@ class Profile extends Component {
 
     }
     componentDidMount() {
-        getUserDetails().then(res => {
-            this.setState({ names: res.data })
-        })
+        // getUserDetails().then(res => {
+        //     this.setState({ names: res.data })
+        // })
     }
 
     render() {

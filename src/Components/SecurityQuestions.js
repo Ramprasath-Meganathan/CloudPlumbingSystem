@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getUserDetails } from './UserFunctions'
+import { register } from './UserFunctions'
 
 class SecurityQuestions extends Component {
 
@@ -32,6 +32,39 @@ class SecurityQuestions extends Component {
             setTimeout(() => { this.setState({ errors: [] }) }, 3000);
         }
         else {
+            const userDetails = JSON.parse(localStorage.getItem('registerState'))
+            localStorage.removeItem('registerState')
+            const user = {
+                firstname: userDetails.firstname,
+                lastname: userDetails.lastname,
+                email: userDetails.email,
+                password: userDetails.password,
+                role: userDetails.role,
+                question1: this.state.question1,
+                question2: this.state.question2,
+                question3: this.state.question3,
+                answer1: this.state.answer1,
+                answer2: this.state.answer2,
+                answer3: this.state.answer3
+            }
+            register(user).then(res => {
+                if (res === 'values inserted successfully') {
+                    //     errors.push(res)
+                    //     this.setState({ errors });
+                    // }
+                    // else if (res === undefined) {
+                    //     errors.push('User already registered')
+                    //     this.setState({ errors });
+                    // }
+                    // else {
+                    window.alert('User Registered successfully')
+                    this.props.history.push('/')
+                }
+            }).catch(err => {
+                if (err) {
+                    errors.email('something wrong with the registration')
+                }
+            })
             console.log('user registered')
         }
     }

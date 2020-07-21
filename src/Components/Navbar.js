@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import { loggedout } from './UserFunctions'
+// import { loggedout } from './UserFunctions'
 
 class Navbar extends Component {
     logout(e) {
         e.preventDefault()
         localStorage.removeItem('usertoken')
-        loggedout(localStorage.getItem('user')).then(res => {
-        })
+        // loggedout(localStorage.getItem('user')).then(res => {
+        // })
         this.props.history.push('/')
     }
     render() {
