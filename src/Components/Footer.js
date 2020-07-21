@@ -16,7 +16,7 @@ const FooterPage = () => {
             <h5 className="title">Services</h5>
             <ul>
               <li className="list-unstyled">
-                <a href="/">Data Processing</a>
+                <a href="/dataprocessing">Data Processing</a>
               </li>
               <li className="list-unstyled">
                 <a href="/">Machine Learning</a>

@@ -117,7 +117,7 @@ function TopNavBar() {
                          <a href="/Register">Register</a>
                      </li>
                      <li className="nav__main-item">
-                         <a  href="/">Data Processing</a>
+                         <a  href="/dataprocessing">Data Processing</a>
                      </li>
                      <li className="nav__main-item">
                          <a href="/">Machine Learning</a>

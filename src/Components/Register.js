@@ -31,8 +31,6 @@ class Register extends Component {
             setTimeout(() => { this.setState({ errors: [] }) }, 3000);
         }
         else {
-            console.log(this.role)
-            window.alert('success')
             const serializedRegisterState = JSON.stringify(this.state)
             localStorage.setItem('registerState', serializedRegisterState)
             this.props.history.push(`\securityquestions`)
