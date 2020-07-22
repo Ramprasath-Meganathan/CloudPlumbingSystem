@@ -9,7 +9,7 @@ const FooterPage = () => {
           <MDBCol md="6">
             <h5 className="title">Serverless Management System</h5>
             <p>
-              Serverless Cloud Application powered by Google Cloud Platform & Amazon Web Services  
+              Serverless Cloud Application powered by Google Cloud Platform & Amazon Web Services
             </p>
           </MDBCol>
           <MDBCol md="6">
@@ -19,7 +19,7 @@ const FooterPage = () => {
                 <a href="/dataprocessing">Data Processing</a>
               </li>
               <li className="list-unstyled">
-                <a href="/">Machine Learning</a>
+                <a href="/">Prediction Service</a>
               </li>
               <li className="list-unstyled">
                 <a href="/">Real Time Chat Conversation</a>

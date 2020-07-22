@@ -6,7 +6,7 @@ class DataProcessing extends Component{
     {
     super()
     this.state ={
-        
+
     }
 }
 cancel()
@@ -37,7 +37,7 @@ render()
                             </button></Link>
                     </div>
                     </form>
-                    </div>
+                </div>
     )
 
 }

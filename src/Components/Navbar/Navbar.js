@@ -13,7 +13,7 @@ function TopNavBar() {
     const [ open, setOpen ] = useState(false);
     console.log(open);
     const handleDrawer = () => {
-        setOpen(true);  
+        setOpen(true);
     }
     const handleDrawerClose = () => {
         setOpen(false);
@@ -98,7 +98,7 @@ function TopNavBar() {
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </Nav>
             </Navbar>
-             <Drawer classes={{ paper: classes.root}} 
+             <Drawer classes={{ paper: classes.root}}
              anchor="left"
              open={open}
              onClose={() => setOpen(false)} >
@@ -120,7 +120,7 @@ function TopNavBar() {
                          <a  href="/dataprocessing">Data Processing</a>
                      </li>
                      <li className="nav__main-item">
-                         <a href="/">Machine Learning</a>
+                         <Link to="/predictionService">Prediction Service</Link>
                      </li>
                      <li className="nav__main-item">
                          <a href="/">Real Time Conversation</a>
