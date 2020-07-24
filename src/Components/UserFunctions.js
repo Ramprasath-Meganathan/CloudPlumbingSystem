@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-
+//https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1
 
 export const register = newUser => {
     return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions/add', {
@@ -19,6 +19,25 @@ export const register = newUser => {
         return res.data
     }).catch(err => {
         console.log(err)
+    })
+}
+
+export const checkIfUserExist = email=>{
+    return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/userExists',{
+    email: email
+    }).then(res => {
+        console.log(res.data)
+        return res.data
+        
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+export const DataProcessingApi = formData => {
+    return axios.post("https://dataprocessingapi-bzedu2xpga-uc.a.run.app/uploadfiles", formData, {
+    }).then(res => {
+        return res.data
     })
 }
 

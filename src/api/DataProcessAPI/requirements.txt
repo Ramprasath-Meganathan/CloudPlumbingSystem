@@ -1,0 +1,4 @@
+Flask_Cors==3.0.8
+boto3==1.13.12
+wordcloud==1.7.0
+Flask==1.1.1

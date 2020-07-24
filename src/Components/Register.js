@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { register } from './UserFunctions'
+import { checkIfUserExist } from './UserFunctions'
 
 
 class Register extends Component {
@@ -31,43 +31,29 @@ class Register extends Component {
             setTimeout(() => { this.setState({ errors: [] }) }, 3000);
         }
         else {
-            const serializedRegisterState = JSON.stringify(this.state)
-            localStorage.setItem('registerState', serializedRegisterState)
-            this.props.history.push(`\securityquestions`)
-            this.state.firstname = ''
-            this.state.lastname = ''
-            this.state.email = ''
-            this.state.password = ''
-            this.state.confirmpassword = ''
-            this.state.role = 'student'
-            this.errors = [];
-            this.setState({ errors });
-            // const user = {
-            //     firstname: this.state.firstname,
-            //     lastname: this.state.lastname,
-            //     email: this.state.email,
-            //     password: this.state.password,
-            //     role: this.state.role
-            // }
-            // register(user).then(res => {
-            //     console.log(res)
-            //     if (res === 'User already registered') {
-            //         errors.push(res)
-            //         this.setState({ errors });
-            //     }
-            //     else if (res === undefined) {
-            //         errors.push('User already registered')
-            //         this.setState({ errors });
-            //     }
-            //     else {
-            //         window.alert('User Registered successfully')
-            //         this.props.history.push('/')
-            //     }
-            // }).catch(err => {
-            //     if (err) {
-            //         errors.email('something wrong with the registration')
-            //     }
-            // })
+            checkIfUserExist(this.state.email).then(res => {
+                if (res === 'new user') {
+                    const serializedRegisterState = JSON.stringify(this.state)
+                    localStorage.setItem('registerState', serializedRegisterState)
+                    this.props.history.push(`\securityquestions`)
+                    this.state.firstname = ''
+                    this.state.lastname = ''
+                    this.state.email = ''
+                    this.state.password = ''
+                    this.state.confirmpassword = ''
+                    this.state.role = 'student'
+                    this.errors = [];
+                    this.setState({ errors });
+
+                }
+                else {
+                    console.log(res)
+                    errors.push(res)
+                    this.setState({ errors });
+                    setTimeout(() => { this.setState({ errors: [] }) }, 3000);
+                }
+
+            })
         }
 
     }
@@ -153,7 +139,7 @@ const validate = (firstname, lastname, email, password, confirmpassword) => {
     if (password < 1) {
         errors.push("Password should be atleast 6 characters long");
     }
-    if (password != confirmpassword) {
+    if (password !== confirmpassword) {
         errors.push("Password and confirm password should match");
 
     }

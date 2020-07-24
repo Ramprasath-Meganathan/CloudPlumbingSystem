@@ -48,15 +48,8 @@ class SecurityQuestions extends Component {
                 answer3: this.state.answer3
             }
             register(user).then(res => {
-                if (res === 'values inserted successfully') {
-                    //     errors.push(res)
-                    //     this.setState({ errors });
-                    // }
-                    // else if (res === undefined) {
-                    //     errors.push('User already registered')
-                    //     this.setState({ errors });
-                    // }
-                    // else {
+                console.log(res)
+                if (res === 'Registered successfully') {
                     window.alert('User Registered successfully')
                     this.props.history.push('/')
                 }
@@ -156,7 +149,7 @@ const validate = (state) => {
         || (state.question2 === state.question1 || state.question2 === state.question3)) {
         errors.push('please select different questions')
     }
-    if (state.answer1.length === 0 || state.answer2.length == 0 || state.answer3.length == 0) {
+    if (state.answer1.length === 0 || state.answer2.length === 0 || state.answer3.length === 0) {
         errors.push('Please answer all the questions')
     }
 
