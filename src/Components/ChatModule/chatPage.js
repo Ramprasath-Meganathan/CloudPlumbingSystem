@@ -1,22 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ChatWindow from './chatWindow';
 import { BrowserRouter as Router,Link } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import OnlineSupportBot from "../onlineSupportLex/onlineSupport"; 
-import ChatWindow from "../ChatModule/chatWindow";
-
-import "./Home.css";
-class Home extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-          toggleStateA: false
-        };
-    }
-
-    
-    render() {
-        return (
+class chatPage extends Component{
+    render(){
+        return(
             <div id="main-container">
                 <section id="product-overview"></section>
                 <section>
@@ -56,7 +44,7 @@ class Home extends Component {
                     </MDBContainer>
                 </section>
                 <div style = {{bottom: '0px',zIndex: '1', right: '0px', position: 'fixed' }}>
-                    <OnlineSupportBot />
+                    <ChatWindow></ChatWindow>
                     
                 </div>
                 {/* <div className="jumbotron mt-5">
@@ -66,6 +54,7 @@ class Home extends Component {
             </div>
         )
     }
+    
 }
 
-export default Home;
+export default chatPage;

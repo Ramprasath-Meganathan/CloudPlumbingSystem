@@ -123,7 +123,7 @@ function TopNavBar() {
                          <a href="/">Machine Learning</a>
                      </li>
                      <li className="nav__main-item">
-                         <a href="/">Real Time Conversation</a>
+                         <a href="/chatservice">Real Time Conversation</a>
                      </li>
                  </ul>
              </div>

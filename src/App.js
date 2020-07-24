@@ -8,6 +8,7 @@ import Profile from './Components/Profile'
 import Register from './Components/Register'
 import FooterPage from './Components/Footer'
 import SecurityQuestions from './Components/SecurityQuestions'
+import chatPage from './Components/ChatModule/chatPage'
 
 class App extends Component {
   render(){
@@ -21,6 +22,8 @@ class App extends Component {
          <Route exact path="/login" component={Login}/>
          <Route exact path="/profile" component={Profile}/>
          <Route exact path="/securityquestions" component={SecurityQuestions}/>
+         <Route exact path="/chatservice" component={chatPage}/>
+         
        </div>
        <FooterPage />
      </div>

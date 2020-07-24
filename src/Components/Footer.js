@@ -22,7 +22,7 @@ const FooterPage = () => {
                 <a href="/">Machine Learning</a>
               </li>
               <li className="list-unstyled">
-                <a href="/">Real Time Chat Conversation</a>
+                <a href="/chatservice">Real Time Chat Conversation</a>
               </li>
               <li className="list-unstyled">
                 <a href="/">Online Support Service</a>
