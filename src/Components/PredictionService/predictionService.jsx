@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ReactS3 from "react-s3";
 import { Link, withRouter } from "react-router-dom"
-
+import { Card } from "react-bootstrap";
 
 const s3BucketConfig =  {
   bucketName: 'prediction-service-catalog',
@@ -16,24 +16,9 @@ class PredictionService extends Component {
   state = {
     files: [],
     names: [],
-    predResults: []
-  }
-
-  uploadFilesHandler = (e) => {
-    if(this.state.files) {
-      const names = []
-      for(let i=0; i < this.state.files.length;i++){
-        const file_name = this.state.files[i].name;
-        const name = file_name.replace(".txt", "");
-        names.push(name);
-      }
-      this.setState({
-        names: names
-      })
-      this.predictionResults(names)
-    }
-    // this.fileInput.value = "";
-    e.preventDefault();
+    predResults: [],
+    uploaded: false,
+    groupedFiles: []
   }
 
   cancelFilesHandler = (e) => {
@@ -44,44 +29,76 @@ class PredictionService extends Component {
     e.preventDefault();
   }
 
-  groupByCluster(names){
-    let group = names.reduce((r, a) => {
-     r[a.cluster] = [...r[a.cluster] || [], a];
-     this.setState({
-       predResults: r
-     })
-     return r;
-    }, {});
-    console.log("group", this.state.predResults);
+  groupByCluster(data){
+    var predResults = data['results']
+    var clusters = {};
+    for (var i = 0; i < predResults.length; i++) {
+      var clusterName = predResults[i].cluster;
+      if (!clusters[clusterName]) {
+        clusters[clusterName] = [];
+      }
+      clusters[clusterName].push(predResults[i].title);
+    }
+    var predResults = [];
+    for (var clusterName in clusters) {
+      predResults.push({cluster: clusterName, title: clusters[clusterName]});
+    }
+    this.setState({
+      groupedFiles: predResults
+    })
   }
 
-  async predictionResults(names) {
-    const data = { "titles": names }
+  async sendPredictionRequest(data) {
     axios.post("https://us-central1-pelagic-media-276804.cloudfunctions.net/predictionService", data)
       .then(res => {
-        let data = res.data.results
-        const results = []
-        for(let i=0;i<data.length;i++){
-          results.push({
-            'cluster': data[i][0], 'title': data[i][1]
-          })
-        }
-        this.groupByCluster(results)
+        let data = res.data
+        console.log(data)
+        this.groupByCluster(data)
       }).catch(err => {
         console.log(err);
       })
+  }
+
+  predictionResults = (event) => {
+      event.preventDefault();
+      const data = { "username": "user" }
+      this.sendPredictionRequest(data)
     }
 
   handleFilesUpload = (event) => {
-    const filesArray = event.target.files
-    this.setState({ files: filesArray })
     event.preventDefault();
+    const filesArray = event.target.files
+    const names = []
+    for(let i=0; i< filesArray.length;i++) {
+      names.push(filesArray[i].name)
+    }
+    this.setState({ files: filesArray, names: names })
+  }
+
+  async sendCloudFunctionUploadRequest(data) {
+    axios.post("https://us-central1-pelagic-media-276804.cloudfunctions.net/uploadFileService", data)
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          uploaded: true
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  submitHandler = (e) => {
+    e.preventDefault()
+    const data = { "files": this.state.names, "username": "user"  }
+    this.sendCloudFunctionUploadRequest(data);
   }
 
   render() {
+    const { uploaded, groupedFiles } = this.state;
     return (
       <div className="paneldesign">
-      <form noValidate onSubmit={this.uploadFilesHandler}>
+      <form noValidate onSubmit={this.submitHandler}>
           <h2 className="h3 mb-3 font-weight-normal text-center">
                 Please upload files to process
                                        </h2>
@@ -101,8 +118,37 @@ class PredictionService extends Component {
                     </button>
                   </div>
                   </form>
-
+                  {
+                    uploaded === true ? (
+                        <div className="form-group">
+                              <h2>Generate Predictions</h2>
+                              <button type="submit"
+                                    className="btn btn-md btn-dark btn-block" onClick={ (e) => this.predictionResults(e) }>
+                                    Predict File Categories
+                              </button>
+                        </div>
+                      ) : null
+                  }
+                  {
+                    groupedFiles.length != 0 ? (
+                            groupedFiles.map((item, index) => {
+                              return <Card key={index}>
+                                  <Card.Header>Cluster: {item.cluster}</Card.Header>
+                                  <Card.Body>
+                                    <Card.Title>Files in a single cluster</Card.Title>
+                                    <ul>
+                                        { item.title.map(( el, ind ) => {
+                                            return <li key={ind}>{item.title[ind]}</li>
+                                        })
+                                      }
+                                    </ul>
+                                  </Card.Body>
+                                </Card>
+                            })
+                    ) : null
+                  }
               </div>
+
     );
   }
 }

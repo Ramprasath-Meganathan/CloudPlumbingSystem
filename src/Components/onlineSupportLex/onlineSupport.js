@@ -4,7 +4,7 @@ import { ChatBot } from 'aws-amplify-react';
 
 Amplify.configure({
   Auth: {
-    identityPoolId: 'us-east-1:05443ab6-6fef-482b-b6f7-8e6e522a37b8',
+    identityPoolId: 'us-east-1:ce8cbb05-dd98-4050-a984-4f4d0e69a614',
     region: 'us-east-1'
   },
   Interactions: {
@@ -25,10 +25,10 @@ class OnlineSupportBot extends Component {
             <ChatBot
               title="Welcome to Online Support Module"
               botName="onlineSupport"
-              clearOnComplete={true} 
+              clearOnComplete={true}
             />
         </div>
-      ); 
+      );
     }
 }
 
