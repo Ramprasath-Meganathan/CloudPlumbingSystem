@@ -81,6 +81,29 @@ app.post('/userExists', (req, res, next) => {
   }
 });
 
+app.post('/userLogin', (req, res, next) => {
+  try {
+    email = req.body.email
+    password= req.body.password
+    if (email) {
+      let auth = "select * from usercredentials where email=? and password=?"
+      values = [email, password]
+      sqlDb.query(auth, values, (err, results) => {
+        if (err) {
+          res.status(404).send('err')
+        }
+        if (Object.keys(results).length > 0) {
+          return res.status(200).send('User Verified')
+        }
+        res.status(200).send('done')
+      })
+    }
+  }
+  catch (e) {
+    next(e);
+  }
+});
+
 app.post('/securityquestions/add', (req, res, next) => {
   try {
     if (req.body) {

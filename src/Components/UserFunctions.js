@@ -21,11 +21,33 @@ export const register = newUser => {
         console.log(err)
     })
 }
+export const mfa2 = User => {
+    return axios.get('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions')
+    .then(function (response) {
+      console.log(response.data);
+      
+      
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+}
 
 export const checkIfUserExist = email=>{
     return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/userExists',{
     email: email
     }).then(res => {
+        console.log(res.data)
+        return res.data
+        
+    }).catch(err => {
+        console.log(err)
+    })
+}
+export const checkIfUserAuth = user=>{
+    return axios.post('https://apisdp.herokuapp.com/userLogin',user).then(res => {
         console.log(res.data)
         return res.data
         

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { login } from './UserFunctions'
+import { login, checkIfUserAuth } from './UserFunctions'
+
+
+
 
 
 class Login extends Component {
@@ -28,21 +31,27 @@ class Login extends Component {
             this.setState({ errors });
         }
         else {
-            login(user).then(res => {
-                console.log(res)
-                if (res === 'Credentials are wrong') {
-                    errors.push(res)
-                    this.setState({ errors });
-                }
-                else if (res === undefined) {
-                    errors.push('Credentials are wrong')
-                    this.setState({ errors });
+
+            console.log('here')
+            console.log(user)
+            checkIfUserAuth(user).then(res => {
+                if (res === 'User Verified') {
+                    console.log('done')
+                    const loginState = JSON.stringify(this.state)
+                    localStorage.setItem('loginState', loginState)
+                    this.props.history.push(`\mfa2`)
+                    
+
                 }
                 else {
-                    localStorage.setItem('user', this.state.email)
-                    this.props.history.push(`\profile`)
+                    console.log(res)
+                    errors.push(res)
+                    this.setState({ errors });
+                    setTimeout(() => { this.setState({ errors: [] }) }, 3000);
                 }
+
             })
+            
         }
     }
     render() {
