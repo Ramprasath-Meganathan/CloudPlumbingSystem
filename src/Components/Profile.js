@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getUserDetails } from './UserFunctions'
+
 
 class Profile extends Component {
 

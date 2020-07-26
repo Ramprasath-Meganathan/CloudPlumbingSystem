@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { DataProcessingApi } from './UserFunctions'
+import { DataProcessingApi } from '../UserFunctions'
 
 class DataProcessing extends Component {
     constructor() {
@@ -50,7 +50,7 @@ class DataProcessing extends Component {
             <div className="paneldesign">
                 <form noValidate onSubmit={this.onSubmit}>
                     <h2 className="h3 mb-3 font-weight-normal text-center">
-                        Please upload files to process
+                        Please upload only .txt files to process
                                          </h2>
                     <div className="form-group">
                         <input type="file" onChange={this.onChange} encType="multipart/form-data" multiple />

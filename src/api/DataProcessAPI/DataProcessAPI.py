@@ -34,10 +34,14 @@ def upload():
             stop_words = set(str(stop_wordslist.read()).split(),)
     finalstring = ''
     for key, value in request.files.to_dict().items():
-       words = value.read().decode('utf-8').split()
+       filename = value.filename
+       content = value.read()  
+       fileContent = content.decode('utf-8')
+       s3Client.put_object(Bucket ="wordcloudbucket", Body= content, Key=filename)
+       words = fileContent.split()
        for word in words:
            if(word[0].isupper()):
-             if word not in stop_words:
+             if word.lower() not in stop_words:
                 if word not in finalstring:
                     finalstring = finalstring+' '+word
     wordcloud = WordCloud(

@@ -5,11 +5,12 @@ import TopNavBar from './Components/Navbar/Navbar'
 import Home from './Components/LandingPage/Home';
 import Login from './Components/Login'
 import Profile from './Components/Profile'
-import Register from './Components/Register'
+import Register from './Components//Register/Register'
 import FooterPage from './Components/Footer'
-import SecurityQuestions from './Components/SecurityQuestions'
+import SecurityQuestions from './Components/Register/SecurityQuestions'
+import MFA2 from './Components/MFA2'
 import chatPage from './Components/ChatModule/chatPage'
-import DataProcessing from './Components/DataProcessing'
+import DataProcessing from './Components/DataProcessing/DataProcessing'
 import PredictionService from "./Components/PredictionService/predictionService"
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
          <Route exact path="/login" component={Login}/>
          <Route exact path="/profile" component={Profile}/>
          <Route exact path="/securityquestions" component={SecurityQuestions}/>
+         <Route exact path="/mfa2" component={MFA2}/>
          <Route exact path="/chatservice" component={chatPage}/>
          
          <Route exact path="/dataprocessing" component={DataProcessing}/>
