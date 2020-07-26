@@ -29,12 +29,14 @@ class Landing extends Component {
                                     <h4 className="image-centered">Online Support Service</h4>
                                 </article>  
                             </MDBCol>
-                            <MDBCol md="6">
-                                <article className="image-container">
-                                    <img style={{ borderRadius: '8px' }} src={require("../../assets/card-image.jpg")} width="300" height="300" alt="Halifax"></img>
-                                    <h4 className="image-centered">Data Processing Service</h4>
-                                </article>  
-                            </MDBCol>
+                                <MDBCol md="6">
+                                    <Link to="/dataprocessing">
+                                        <article className="image-container">
+                                            <img style={{ borderRadius: '8px' }} src={require("../../assets/card-image.jpg")} width="300" height="300" alt="Halifax"></img>
+                                            <h4 className="image-centered">Data Processing Service</h4>
+                                        </article>  
+                                    </Link>
+                                </MDBCol>
                         </MDBRow>
                         <br></br>
                         <MDBRow>
@@ -46,12 +48,14 @@ class Landing extends Component {
                                 </article>  
                                 </Link>
                             </MDBCol>
-                            <MDBCol md="6">
-                                <article className="image-container">
-                                    <img style={{ borderRadius: '8px' }} src={require("../../assets/card-image.jpg")} width="300" height="300" alt="Halifax"></img>
-                                    <h4 className="image-centered">Machine Learning Service</h4>
-                                </article>  
-                            </MDBCol>
+                                <MDBCol md="6">
+                                    <Link to='/predictionService'>
+                                        <article className="image-container">
+                                            <img style={{ borderRadius: '8px' }} src={require("../../assets/card-image.jpg")} width="300" height="300" alt="Halifax"></img>
+                                            <h4 className="image-centered">Prediction Service</h4>
+                                        </article>  
+                                    </Link>
+                                </MDBCol>
                         </MDBRow>
                     </MDBContainer>
                 </section>

@@ -110,7 +110,7 @@ class PredictionService extends Component {
       <div className="paneldesign">
       <form noValidate onSubmit={this.submitHandler}>
           <h2 className="h3 mb-3 font-weight-normal text-center">
-                Please upload files to process
+                Please upload files in .txt format
                                        </h2>
                   <div className="form-group">
                       <input type="file" id="files" name="files" multiple ref={ref=> this.fileInput = ref} onChange={ (e) => {

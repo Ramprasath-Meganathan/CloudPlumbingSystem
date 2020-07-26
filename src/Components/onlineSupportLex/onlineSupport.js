@@ -36,7 +36,7 @@ class OnlineSupportBot extends Component {
                  style={{position: 'absolute'}}
                  backgroundColor="#FFFFFF"
                  height="430px"
-                 headerText="Amazon Lex Chat Support" />
+                 headerText="Online Chat Support" />
         </div>
       );
     }

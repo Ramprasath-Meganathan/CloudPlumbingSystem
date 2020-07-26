@@ -143,7 +143,7 @@ class LexChat extends React.Component {
     }
 
     const headerRectStyle = {
-      backgroundColor: '#000000', 
+      backgroundColor: 'rgb(62, 48, 83)', 
       width: '408px', 
       height: '60px',
       textAlign: 'center',
