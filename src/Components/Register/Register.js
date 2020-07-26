@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { checkIfUserExist } from './UserFunctions'
+import { checkIfUserExist } from '../UserFunctions'
 
 
 class Register extends Component {
