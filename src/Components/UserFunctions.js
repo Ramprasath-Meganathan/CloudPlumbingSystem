@@ -77,7 +77,7 @@ export const mfa2 = user => {
       let q1,q2,q3,a1,a2,a3=''
       for(const d2 of response.data){
 
-        if(d2.data.email.localeCompare(user.email))
+        if(d2.data.email ===user.email)
           {
             q1=d2.data.question1
             a1=d2.data.answer1
@@ -92,7 +92,7 @@ export const mfa2 = user => {
         
       }
       console.log(a3)
-      if(user.answer1 == a2  ){
+      if(user.answer1 == a1 ){
         
         return('Login successfully')
     
