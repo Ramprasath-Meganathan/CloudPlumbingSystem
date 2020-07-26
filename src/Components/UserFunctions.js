@@ -21,16 +21,92 @@ export const register = newUser => {
         console.log(err)
     })
 }
-export const mfa2 = User => {
-    return axios.get('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions')
-        .then(function (response) {
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+export const mfaquestion = user => {
+    return axios.get('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions', {
+        email: user.email
+    })
 
+    .then(function (response)
+    
+    {
+      
+
+      let q1,q2,q3=''
+      for(const d2 of response.data){
+
+        if(d2.data.email===user.email)
+          {
+            q1=d2.data.question1
+           
+            q2=d2.data.question2
+      
+            q3=d2.data.question3
+        
+            
+
+          }
+        
+      }
+      
+      return (q1)
+      
+      
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
 }
+
+export const mfa2 = user => {
+    return axios.get('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions', {
+        email: user.email,
+        question1: user.question1,
+        
+        answer1: user.answer1,
+        
+    })
+
+    .then(function (response)
+    
+    {
+      
+
+        console.log(user.answer3)
+      let q1,q2,q3,a1,a2,a3=''
+      for(const d2 of response.data){
+
+        if(d2.data.email.localeCompare(user.email))
+          {
+            q1=d2.data.question1
+            a1=d2.data.answer1
+            q2=d2.data.question2
+            a2=d2.data.answer2
+            q3=d2.data.question3
+            a3=d2.data.answer3
+
+            
+
+          }
+        
+      }
+      console.log(a3)
+      if(user.answer1 == a2  ){
+        
+        return('Login successfully')
+    
+      }
+      
+      
+
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  
+}
+
 
 export const checkIfUserExist = email => {
     return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/userExists', {
