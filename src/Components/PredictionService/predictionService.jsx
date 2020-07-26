@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import ReactS3 from "react-s3";
 import { Link, withRouter } from "react-router-dom"
-import { Card } from "react-bootstrap";
+import { Card, CardGroup } from "react-bootstrap";
 
 const s3BucketConfig =  {
   bucketName: 'prediction-service-catalog',
@@ -15,8 +15,9 @@ class PredictionService extends Component {
 
   state = {
     files: [],
-    names: [],
+    contents: [],
     predResults: [],
+    titles: [], 
     uploaded: false,
     groupedFiles: []
   }
@@ -67,12 +68,21 @@ class PredictionService extends Component {
 
   handleFilesUpload = (event) => {
     event.preventDefault();
-    const filesArray = event.target.files
-    const names = []
+    const filesArray = event.target.files;
+    const contents = []
+    const titles = [] 
     for(let i=0; i< filesArray.length;i++) {
-      names.push(filesArray[i].name)
+      titles.push(filesArray[i].name);
+      var reader = new FileReader();
+      reader.readAsText(filesArray[i], "UTF-8");
+      reader.onload = function (evt) {
+          contents.push(evt.target.result); 
+      }
+      reader.onerror = function (evt) {
+          document.getElementById("fileContents").innerHTML = "error reading file";
+      }
     }
-    this.setState({ files: filesArray, names: names })
+    this.setState({ files: filesArray, contents: contents, titles: titles })
   }
 
   async sendCloudFunctionUploadRequest(data) {
@@ -90,7 +100,7 @@ class PredictionService extends Component {
 
   submitHandler = (e) => {
     e.preventDefault()
-    const data = { "files": this.state.names, "username": "user"  }
+    const data = { "files": this.state.contents , "titles": this.state.titles, "username": "user" }
     this.sendCloudFunctionUploadRequest(data);
   }
 
@@ -132,18 +142,20 @@ class PredictionService extends Component {
                   {
                     groupedFiles.length != 0 ? (
                             groupedFiles.map((item, index) => {
-                              return <Card key={index}>
+                              return <CardGroup>
+                                      <Card key={index}>
                                   <Card.Header>Cluster: {item.cluster}</Card.Header>
-                                  <Card.Body>
-                                    <Card.Title>Files in a single cluster</Card.Title>
-                                    <ul>
-                                        { item.title.map(( el, ind ) => {
-                                            return <li key={ind}>{item.title[ind]}</li>
-                                        })
-                                      }
-                                    </ul>
-                                  </Card.Body>
+                                      <Card.Body>
+                                        <Card.Title>Files in a single cluster</Card.Title>
+                                        <ul>
+                                            { item.title.map(( el, ind ) => {
+                                                return <li key={ind}>{item.title[ind]}</li>
+                                            })
+                                          }
+                                        </ul>
+                                      </Card.Body>
                                 </Card>
+                                </CardGroup>
                             })
                     ) : null
                   }
