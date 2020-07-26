@@ -39,6 +39,7 @@ class Login extends Component {
                     console.log('done')
                     const loginState = JSON.stringify(this.state)
                     localStorage.setItem('loginState', loginState)
+                    localStorage.setItem('email',this.state.email)
                     this.props.history.push(`\mfa2`)
                     
 

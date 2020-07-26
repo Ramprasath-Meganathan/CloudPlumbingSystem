@@ -7,8 +7,9 @@ const ChatWindow = props => {
   const [messageList, setMessageList] = useState([]);
   const [badge, setBadge] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const username= localStorage.getItem("email")
   //const { username } = props.authData;
-  const username='pavan'
+  //const username='pavan'
   useEffect(
     () => {
       console.log(username)
@@ -46,11 +47,7 @@ const ChatWindow = props => {
     const {text}=data
     const newdatawithauthor='('+username+')'+text
     const newdata={}
-    console.log(newdatawithauthor)
-    console.log('text:'+text)
-    console.log('author'+author)
-    console.log('data'+data)
-    console.log('message'+ JSON.stringify(message))
+    
     let newDataMessage={}
     if(type==='text')
     {
