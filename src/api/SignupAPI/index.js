@@ -87,6 +87,7 @@ app.post('/userLogin', (req, res, next) => {
     password= req.body.password
     if (email) {
       let auth = "select * from usercredentials where email=? and password=?"
+      let loginState = 'Insert into userdetails values(?,?,?,?)';
       values = [email, password]
       sqlDb.query(auth, values, (err, results) => {
         if (err) {
