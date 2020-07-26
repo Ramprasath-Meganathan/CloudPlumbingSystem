@@ -3,12 +3,12 @@ import {BrowserRouter as Router,Route} from 'react-router-dom'
 import './App.css';
 import TopNavBar from './Components/Navbar/Navbar'
 import Landing from './Components/LandingPage/Landing';
-import Login from './Components/Login'
+import Login from './Components/Authentication/Login'
 import Profile from './Components/Profile'
 import Register from './Components//Register/Register'
 import FooterPage from './Components/Footer'
 import SecurityQuestions from './Components/Register/SecurityQuestions'
-import MFA2 from './Components/MFA2'
+import MFA2 from './Components/Authentication/MFA2'
 import chatPage from './Components/ChatModule/chatPage'
 import DataProcessing from './Components/DataProcessing/DataProcessing'
 import PredictionService from "./Components/PredictionService/predictionService"
