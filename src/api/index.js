@@ -63,7 +63,7 @@ app.post('/securityquestions/add', async (req, res, next) => {
   try {
     if (req.body) {
       let userCredentialsSql = 'Insert into usercredentials values(?,?)';
-      let userDetailssql = 'Insert into userdetails values(?,?,?,?)';
+      let userDetailssql = 'Insert into userdetails values(?,?,?,?,?)';
       email = req.body.email
       question1 = req.body.question1
       answer1 = req.body.answer1
@@ -84,7 +84,7 @@ app.post('/securityquestions/add', async (req, res, next) => {
         });
       }
       if (firstname && lastname && email && userStatus) {
-        let userDetailsValues = [firstname, lastname, email,userStatus]
+        let userDetailsValues = [firstname, lastname, email,userStatus, "online"]
         sqlDb.query(userDetailssql, userDetailsValues, (err, detailresults) => {
           if (err) {
             return res.status(404).send('error occurred while inserting record in the database');

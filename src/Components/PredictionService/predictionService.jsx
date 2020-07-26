@@ -140,16 +140,16 @@ class PredictionService extends Component {
                       ) : null
                   }
                   {
-                    groupedFiles.length != 0 ? (
+                    groupedFiles.length !== 0 ? (
                             groupedFiles.map((item, index) => {
-                              return <CardGroup>
+                              return <CardGroup style={{ marginBottom:'15px'}}>
                                       <Card key={index}>
                                   <Card.Header>Cluster: {item.cluster}</Card.Header>
                                       <Card.Body>
                                         <Card.Title>Files in a single cluster</Card.Title>
                                         <ul>
                                             { item.title.map(( el, ind ) => {
-                                                return <li key={ind}>{item.title[ind]}</li>
+                                                return <li key={el}>{item.title[ind]}</li>
                                             })
                                           }
                                         </ul>

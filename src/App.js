@@ -22,7 +22,7 @@ class App extends Component {
      <div className="App">
        <TopNavBar />
        <Route exact path="/" component={Home}/>
-       <div className="Container">
+       <div style={{ paddingBottom: '150px'}} className="Container">
          <Route exact path="/register" component={Register}/>
          <Route exact path="/login" component={Login}/>
          <Route exact path="/profile" component={Profile}/>

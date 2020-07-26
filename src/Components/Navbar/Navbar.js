@@ -111,40 +111,18 @@ function TopNavBar() {
              <div className="nav__main">
                  <ul className="nav__main-items">
                      <li className="nav__main-item">
-                         <a  href="/dataprocessing">Data Processing</a>
+                         <Link to="/dataprocessing">Data Processing</Link>
                      </li>
                      <li className="nav__main-item">
                          <Link to="/predictionService">Prediction Service</Link>
                      </li>
                      <li className="nav__main-item">
-                         <a href="/chatservice">Real Time Conversation</a>
+                         <Link to="/chatservice">Real Time Conversation</Link>
                      </li>
                  </ul>
              </div>
          </Drawer>
          </div>
-            // <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-            //     <button className="navbar-toggler"
-            //         type="button"
-            //         data-toggle="collapse"
-            //         data-target="#navbar1"
-            //         aria-controls="navbar1"
-            //         aria-expanded="false"
-            //         aria-label="Toggle navigation">
-            //         <span className="navbar-toggle-icon"></span>
-            //     </button>
-            //     <div className="collapse navbar-collapse justify-content md-center"
-            //         id="navbar1">
-            //         <ul className="navbar-nav">
-            //             <li className="navbar-nav">
-            //                 <Link to="/" className="nav-link">
-            //                     Home
-            //         </Link>
-            //             </li>
-            //         </ul>
-
-            //     </div>
-            // </nav>
         )
 }
 
