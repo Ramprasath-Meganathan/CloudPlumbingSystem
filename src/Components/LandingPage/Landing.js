@@ -4,8 +4,8 @@ import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import OnlineSupportBot from "../onlineSupportLex/onlineSupport"; 
 import ChatWindow from "../ChatModule/chatWindow";
 
-import "./Home.css";
-class Home extends Component {
+import "./Landing.css";
+class Landing extends Component {
 
     constructor(props) {
         super(props);
@@ -68,4 +68,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Landing;

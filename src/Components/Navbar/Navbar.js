@@ -111,12 +111,6 @@ function TopNavBar() {
              <div className="nav__main">
                  <ul className="nav__main-items">
                      <li className="nav__main-item">
-                         <a href="/login">Login</a>
-                     </li>
-                     <li className="nav__main-item">
-                         <a href="/Register">Register</a>
-                     </li>
-                     <li className="nav__main-item">
                          <a  href="/dataprocessing">Data Processing</a>
                      </li>
                      <li className="nav__main-item">

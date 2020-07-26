@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import './App.css';
 import TopNavBar from './Components/Navbar/Navbar'
-import Home from './Components/LandingPage/Home';
+import Landing from './Components/LandingPage/Landing';
 import Login from './Components/Login'
 import Profile from './Components/Profile'
 import Register from './Components//Register/Register'
@@ -12,6 +12,7 @@ import MFA2 from './Components/MFA2'
 import chatPage from './Components/ChatModule/chatPage'
 import DataProcessing from './Components/DataProcessing/DataProcessing'
 import PredictionService from "./Components/PredictionService/predictionService"
+import Home from "./Components/Home/Home"
 
 class App extends Component {
   render(){
@@ -27,6 +28,7 @@ class App extends Component {
          <Route exact path="/securityquestions" component={SecurityQuestions}/>
          <Route exact path="/mfa2" component={MFA2}/>
          <Route exact path="/chatservice" component={chatPage}/>
+         <Route exact path="/landing" component={Landing}/>
          
          <Route exact path="/dataprocessing" component={DataProcessing}/>
          <Route exact path="/predictionService" component={PredictionService}/>
