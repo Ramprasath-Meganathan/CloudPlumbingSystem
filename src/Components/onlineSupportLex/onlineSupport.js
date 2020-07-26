@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Amplify from 'aws-amplify';
 import { ChatBot } from 'aws-amplify-react';
-import LexChat from "react-lex";
+import LexChat from "./LexChatUIComponent"; 
 import "./onlineSupport.css"
 
 Amplify.configure({
@@ -36,7 +36,7 @@ class OnlineSupportBot extends Component {
                  style={{position: 'absolute'}}
                  backgroundColor="#FFFFFF"
                  height="430px"
-                 headerText="Online Support Module" />
+                 headerText="Amazon Lex Chat Support" />
         </div>
       );
     }
