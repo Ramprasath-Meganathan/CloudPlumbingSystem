@@ -16,16 +16,16 @@ const FooterPage = () => {
             <h5 className="title">Services</h5>
             <ul>
               <li className="list-unstyled">
-                <a href="/dataprocessing">Data Processing</a>
+                Data Processing
               </li>
               <li className="list-unstyled">
-                <a href="/">Prediction Service</a>
+                Prediction Service
               </li>
               <li className="list-unstyled">
-                <a href="/chatservice">Real Time Chat Conversation</a>
+                Real Time Chat Conversation
               </li>
               <li className="list-unstyled">
-                <a href="/">Online Support Service</a>
+                Online Support Service
               </li>
             </ul>
           </MDBCol>

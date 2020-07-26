@@ -13,6 +13,7 @@ import chatPage from './Components/ChatModule/chatPage'
 import DataProcessing from './Components/DataProcessing/DataProcessing'
 import PredictionService from "./Components/PredictionService/predictionService"
 import Home from "./Components/Home/Home"
+import OnlineSupportPage from './Components/onlineSupportLex/onlineSupportPage'
 
 class App extends Component {
   render(){
@@ -32,6 +33,7 @@ class App extends Component {
          
          <Route exact path="/dataprocessing" component={DataProcessing}/>
          <Route exact path="/predictionService" component={PredictionService}/>
+         <Route exact path="/onlinesupportpage" component={OnlineSupportPage}/>
        </div>
        <FooterPage />
      </div>

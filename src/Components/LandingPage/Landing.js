@@ -24,10 +24,12 @@ class Landing extends Component {
                     <MDBContainer>
                         <MDBRow>
                             <MDBCol md="6">
+                                <Link to='/onlinesupportpage'>
                                 <article className="image-container">
                                     <img style={{ borderRadius: '8px' }} src={require("../../assets/card-image.jpg")} width="300" height="300" alt="Halifax"></img>
                                     <h4 className="image-centered">Online Support Service</h4>
-                                </article>  
+                                </article>
+                                </Link>  
                             </MDBCol>
                                 <MDBCol md="6">
                                     <Link to="/dataprocessing">
@@ -60,7 +62,7 @@ class Landing extends Component {
                     </MDBContainer>
                 </section>
                 <div style = {{bottom: '0px',zIndex: '1', right: '0px', position: 'fixed' }}>
-                    <OnlineSupportBot />
+                    
                     
                 </div>
                 {/* <div className="jumbotron mt-5">
