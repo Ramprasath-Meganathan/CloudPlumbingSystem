@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { register } from '../UserFunctions'
+import ConfirmMessage from './ConfirmMessage';
+
 
 class SecurityQuestions extends Component {
 
@@ -14,6 +16,7 @@ class SecurityQuestions extends Component {
             'answer2': '',
             'question3': 'what is your mother maiden name?',
             'answer3': '',
+            'message':'',
             errors: []
         }
         this.onChange = this.onChange.bind(this)
@@ -50,14 +53,15 @@ class SecurityQuestions extends Component {
             register(user).then(res => {
                 console.log(res)
                 if (res === 'Registered successfully') {
-                    window.alert('User Registered successfully')
-                    this.props.history.push('/')
+                    this.setState({message: "User Registered successfully"});
                 }
             }).catch(err => {
                 if (err) {
                     errors.email('something wrong with the registration')
                 }
             })
+            setTimeout(() =>  this.setState({message: ""}), 3000);
+            setTimeout(() =>  this.props.history.push('/'), 3000);
             console.log('user registered')
         }
     }
@@ -89,6 +93,7 @@ class SecurityQuestions extends Component {
                     <h3 className="h3 mb-3 font-weight-normal">
                         Please setup Security Questions to proceed
                         </h3>
+                        {this.state.message.length>0 ? <ConfirmMessage message={this.state.message}/> : null }
                     <div className="form-group">
                         <label>Question 1</label>
                         <select className="form-control" defaultValue={this.state.question1}

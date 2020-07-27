@@ -23,7 +23,7 @@ class MFA2 extends Component {
         e.preventDefault()
         
             const userDetails = JSON.parse(localStorage.getItem('loginState'))
-            localStorage.removeItem('loginState')
+            
             const user = {
                 
                 email: userDetails.email,
@@ -40,7 +40,11 @@ class MFA2 extends Component {
                     console.log(res);
                     localStorage.setItem('usertoken', res)
                     window.alert('User Logged In successfully')
+                    localStorage.removeItem('loginState')
                     this.props.history.push('/landing')
+                }
+                else{
+                    window.alert('There is some error')
                 }
             }).catch(err => {
                 if (err) {
