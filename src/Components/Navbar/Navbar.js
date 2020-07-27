@@ -11,8 +11,9 @@ import "./Navbar.css";
 function TopNavBar() {
 
     let history = useHistory();
+    const userLoggedIn = localStorage.getItem('usertoken')
+
     const [ open, setOpen ] = useState(false);
-    console.log(open);
     const handleDrawer = () => {
         setOpen(true);
     }
@@ -50,7 +51,6 @@ function TopNavBar() {
 
     function logout(e) {
         e.preventDefault()
-        console.log(localStorage.getItem('user'))
         loggedout(localStorage.getItem('user')).then(res => {
             localStorage.removeItem('usertoken')
         })
@@ -88,11 +88,19 @@ function TopNavBar() {
                 <IconButton onClick={handleDrawer} color="inherit" edge="start" aria-label="menu">
                     <Menu />
                 </IconButton>
+                { userLoggedIn
+                ?
+                <Link to="/landing">
+                    <Navbar.Brand>Dal LMS</Navbar.Brand>
+                </Link>:
                 <Link to="/">
                     <Navbar.Brand>Dal LMS</Navbar.Brand>
-                </Link>
+                </Link>}
                 <Nav className="mr-auto">
-                    <Link to="/" className="nav-link">Home</Link>
+               { userLoggedIn
+                ?
+                     <Link to="/landing" className="nav-link">Home</Link>:
+                <Link to="/" className="nav-link">Home</Link>}
                 </Nav>
                 <Nav>
                     {localStorage.usertoken ? userLink : loginRegLink}
