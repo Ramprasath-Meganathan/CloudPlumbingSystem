@@ -33,36 +33,40 @@ def upload():
     with open('./english.txt') as stop_wordslist:
             stop_words = set(str(stop_wordslist.read()).split(),)
     finalstring = ''
-    for key, value in request.files.to_dict().items():
-       filename = value.filename
-       content = value.read()  
-       fileContent = content.decode('utf-8')
-       s3Client.put_object(Bucket ="wordcloudbucket", Body= content, Key=filename)
-       words = fileContent.split()
-       for word in words:
-           if(word[0].isupper()):
-             if word.lower() not in stop_words:
-                if word not in finalstring:
-                    finalstring = finalstring+' '+word
-    wordcloud = WordCloud(
-        stopwords=STOPWORDS,
-        background_color='white',
-        width=400,
-        height=400,
-        min_font_size=7
-    ).generate(finalstring)
-    wordcloud.to_file(fileName)
-    s3Client.upload_file(fileName, "wordcloudbucket", fileName)
-    object_acl = s3Resource.ObjectAcl('wordcloudbucket', fileName)
-    response = object_acl.put(ACL='public-read')
-    url = s3Client.generate_presigned_url('get_object',
-                                          Params={
-                                              'Bucket': 'wordcloudbucket',
-                                              'Key': fileName,
-                                          }
-                                          )
+    data = dict((key, request.files.getlist('files'))
+                for key in request.files.keys())
+    for firstvalue in data.values():
+        for value in firstvalue:
+                filename = value.filename
+                content = value.read()
+                fileContent = content.decode('utf-8')
+                s3Client.put_object(Bucket="wordcloudbucket",
+                                    Body=content, Key=filename)
+                words = fileContent.split()
+                for word in words:
+                    if(word[0].isupper()):
+                        if word.lower() not in stop_words:
+                            if word not in finalstring:
+                                finalstring = finalstring+' '+word
+                wordcloud = WordCloud(
+                    stopwords=STOPWORDS,
+                    background_color='white',
+                    width=400,
+                    height=400,
+                    min_font_size=7
+                ).generate(finalstring)
+                wordcloud.to_file(fileName)
+                s3Client.upload_file(fileName, "wordcloudbucket", fileName)
+                object_acl = s3Resource.ObjectAcl('wordcloudbucket', fileName)
+                response = object_acl.put(ACL='public-read')
+                url = s3Client.generate_presigned_url('get_object',
+                                                      Params={
+                                                          'Bucket': 'wordcloudbucket',
+                                                          'Key': fileName,
+                                                      }
+                                                      )
     return (url)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000)
+    app.run(host='0.0.0.0', port=5000)

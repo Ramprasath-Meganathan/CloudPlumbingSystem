@@ -2,6 +2,7 @@ const functions = require('firebase-functions')
 const express = require('express');
 const app = express()
 const cors = require('cors');
+const bcrypt = require('bcrypt')
 const admin = require('firebase-admin');
 var serviceAccount = require("./serviceAccountKey.json");
 const bodyParser = require('body-parser');
@@ -84,19 +85,25 @@ app.post('/userExists', (req, res, next) => {
 app.post('/userLogin', (req, res, next) => {
   try {
     email = req.body.email
-    password= req.body.password
+    password = req.body.password
     if (email) {
-      let auth = "select * from usercredentials where email=? and password=?"
-      let loginState = 'Insert into userdetails values(?,?,?,?)';
-      values = [email, password]
+      let auth = "select * from usercredentials where email=?"
+      values = [email]
       sqlDb.query(auth, values, (err, results) => {
         if (err) {
-          res.status(404).send('err')
+          res.status(404).send(err)
         }
         if (Object.keys(results).length > 0) {
-          return res.status(200).send('User Verified')
+          bcrypt.compare(password, results[0].password, (error, passwordresults) => {
+            if (passwordresults) {
+              return res.status(200).send('User Verified')
+            }
+            else {
+              return res.status(200).send('done')
+            }
+
+          })
         }
-        res.status(200).send('done')
       })
     }
   }
@@ -124,12 +131,14 @@ app.post('/securityquestions/add', (req, res, next) => {
       loginState = 'offline'
 
       if (email && password) {
-        let userCredentialValues = [email, password]
-        sqlDb.query(userCredentialsSql, userCredentialValues, (err, credentialresults) => {
-          if (err) {
-            res.status(404).send('Something wrong with the registration');
-          }
-        });
+        bcrypt.hash(password, 10, (err, hash) => {
+          let userCredentialValues = [email, hash]
+          sqlDb.query(userCredentialsSql, userCredentialValues, (err, credentialresults) => {
+            if (err) {
+              res.status(404).send('Something wrong with the registration');
+            }
+          });
+        })
       }
       if (firstname && lastname && email && userStatus) {
         let userDetailsValues = [firstname, lastname, email, userStatus, loginState]
@@ -151,13 +160,13 @@ app.post('/securityquestions/add', (req, res, next) => {
 });
 
 app.put('/logout', (req, res) => {
-  values=[req.body.email]
+  values = [req.body.email]
   let sql = `Update userdetails set loginState ='offline' where email=?`
-  sqlDb.query(sql,values, (err, results) => {
-      if (err) {
-          console.log(err);
-      }
-      res.send(`value updated`);
+  sqlDb.query(sql, values, (err, results) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send(`value updated`);
   })
 })
 

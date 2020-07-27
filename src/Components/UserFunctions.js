@@ -122,8 +122,9 @@ export const checkIfUserExist = email => {
         console.log(err)
     })
 }
+//https://apisdp.herokuapp.com
 export const checkIfUserAuth = user => {
-    return axios.post('https://apisdp.herokuapp.com/userLogin', user).then(res => {
+    return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/userLogin', user).then(res => {
         console.log(res.data)
         return res.data
 
