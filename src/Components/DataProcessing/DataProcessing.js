@@ -61,7 +61,7 @@ class DataProcessing extends Component {
                         >
                             Upload
                             </button>
-                        <Link to="/">
+                        <Link to="/landing">
                             <button type="submit"
                                 className="btn btn-md btn-dark btn-block">
                                 Cancel
