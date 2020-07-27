@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router,Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import OnlineSupportBot from "../onlineSupportLex/onlineSupport"; 
 import ChatWindow from "../ChatModule/chatWindow";
@@ -58,4 +59,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default withRouter(Home);

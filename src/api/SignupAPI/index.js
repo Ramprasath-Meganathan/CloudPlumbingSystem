@@ -109,7 +109,7 @@ app.post('/securityquestions/add', (req, res, next) => {
   try {
     if (req.body) {
       let userCredentialsSql = 'Insert into usercredentials values(?,?)';
-      let userDetailssql = 'Insert into userdetails values(?,?,?,?)';
+      let userDetailssql = 'Insert into userdetails values(?,?,?,?,?)';
       email = req.body.email
       question1 = req.body.question1
       answer1 = req.body.answer1
@@ -121,26 +121,27 @@ app.post('/securityquestions/add', (req, res, next) => {
       firstname = req.body.firstname
       lastname = req.body.lastname
       userStatus = req.body.role
+      loginState = 'offline'
 
       if (email && password) {
         let userCredentialValues = [email, password]
         sqlDb.query(userCredentialsSql, userCredentialValues, (err, credentialresults) => {
           if (err) {
-            return res.status(404).send('Something wrong with the registration');
+            res.status(404).send('Something wrong with the registration');
           }
         });
-        if (firstname && lastname && email && userStatus) {
-          let userDetailsValues = [firstname, lastname, email, userStatus]
-          sqlDb.query(userDetailssql, userDetailsValues, (err, detailresults) => {
-            if (err) {
-              return res.status(404).send('Something wrong with the registration');
-            }
-          });
-        }
-        db.collection('usersecurityqa').add({ email, question1, answer1 })
-        db.collection('usersecurityqa').add({ email, question2, answer2 })
-        db.collection('usersecurityqa').add({ email, question3, answer3 })  
       }
+      if (firstname && lastname && email && userStatus) {
+        let userDetailsValues = [firstname, lastname, email, userStatus, loginState]
+        sqlDb.query(userDetailssql, userDetailsValues, (error, detailresults) => {
+          console.log(userDetailsValues)
+          if (error) {
+            res.status(404).send('Something wrong with the registration');
+          }
+          console.log(detailresults)
+        });
+      }
+      db.collection('usersecurityqa').add({ email, question1, answer1, question2, answer2, question3, answer3 })
     }
     res.status(200).send('Registered successfully')
 
@@ -148,6 +149,17 @@ app.post('/securityquestions/add', (req, res, next) => {
     next(e);
   }
 });
+
+app.put('/logout', (req, res) => {
+  values=[req.body.email]
+  let sql = `Update userdetails set loginState ='offline' where email=?`
+  sqlDb.query(sql,values, (err, results) => {
+      if (err) {
+          console.log(err);
+      }
+      res.send(`value updated`);
+  })
+})
 
 port = process.env.Port || 3000;
 app.listen(port, () => {

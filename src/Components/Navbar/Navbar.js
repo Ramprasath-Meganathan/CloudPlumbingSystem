@@ -49,10 +49,12 @@ function TopNavBar() {
 
     function logout(e) {
         e.preventDefault()
-        localStorage.removeItem('usertoken')
+        console.log(localStorage.getItem('user'))
         loggedout(localStorage.getItem('user')).then(res => {
+            localStorage.removeItem('usertoken')
         })
-        this.props.history.push('/')
+       this.props.history.push('/')
+       
     }
     const loginRegLink = (
         <ul className="navbar-nav pull-left">
@@ -70,11 +72,6 @@ function TopNavBar() {
     )
     const userLink = (
         <ul className="navbar-nav pull-right">
-            <li className="nav-item">
-                <Link to="/profile" className="nav-link">
-                    Login
-            </Link>
-            </li>
             <li className="nav-item">
                 <a href onClick={logout.bind(this)} className="nav-link">
                     Logout

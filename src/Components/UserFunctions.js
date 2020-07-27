@@ -1,4 +1,8 @@
 import axios from 'axios'
+const jwt = require('jsonwebtoken')
+
+
+
 
 //https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1
 
@@ -93,8 +97,9 @@ export const mfa2 = user => {
       }
       console.log(a3)
       if(user.answer1 == a1 ){
-        
-        return('Login successfully')
+        let token = jwt.sign(user.email.trim().toLowerCase(), 'secret')
+        localStorage.setItem('user',user.email)
+        return(token)
     
       }
       
@@ -138,7 +143,8 @@ export const DataProcessingApi = formData => {
 
 
 export const loggedout = () => {
-    return axios.put('https://landingservice-bzedu2xpga-de.a.run.app/logout', {
+    console.log(localStorage.getItem('user'))
+    return axios.put('http://localhost:3000/logout', {
         email: localStorage.getItem('user')
     }).then(res => {
         console.log('logout')

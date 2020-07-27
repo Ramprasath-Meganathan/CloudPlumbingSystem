@@ -36,7 +36,9 @@ class MFA2 extends Component {
             }
             mfa2(user).then(res => {
                 console.log(res)
-                if (res === 'Login successfully') {
+                if (res) {
+                    console.log(res);
+                    localStorage.setItem('usertoken', res)
                     window.alert('User Logged In successfully')
                     this.props.history.push('/landing')
                 }
