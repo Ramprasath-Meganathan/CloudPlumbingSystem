@@ -4,8 +4,6 @@ const jwt = require('jsonwebtoken')
 
 
 
-//https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1
-
 export const register = newUser => {
     return axios.post('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/securityquestions/add', {
         firstname: newUser.firstname,
@@ -144,7 +142,7 @@ export const DataProcessingApi = formData => {
 
 export const loggedout = () => {
     console.log(localStorage.getItem('user'))
-    return axios.put('http://localhost:3000/logout', {
+    return axios.put('https://us-central1-cloudprojects-279901.cloudfunctions.net/function-1/logout', {
         email: localStorage.getItem('user')
     }).then(res => {
         console.log('logout')
