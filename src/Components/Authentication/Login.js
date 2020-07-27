@@ -45,8 +45,8 @@ class Login extends Component {
 
                 }
                 else {
-                    console.log(res)
-                    errors.push(res)
+                    window.alert('Email or Password doesnt match')
+                    errors.push("Email or Password doesn't match")
                     this.setState({ errors });
                     setTimeout(() => { this.setState({ errors: [] }) }, 3000);
                 }
