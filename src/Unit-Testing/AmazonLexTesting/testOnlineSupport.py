@@ -31,7 +31,7 @@ class TestOnlineSupportModule(unittest.TestCase):
 
 
 if __name__ == '__main__':
-   log_file = 'log_file.txt'
+   log_file = 'OnlineSupportLogFile.txt'
    with open(log_file, "w") as f:
        runner = unittest.TextTestRunner(f)
        unittest.main(testRunner=runner)

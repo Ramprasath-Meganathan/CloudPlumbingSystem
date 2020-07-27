@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import React, { useState} from 'react'
+import { Link, withRouter, useHistory } from 'react-router-dom'
 import { Menu } from "@material-ui/icons"
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +10,7 @@ import "./Navbar.css";
 
 function TopNavBar() {
 
+    let history = useHistory();
     const [ open, setOpen ] = useState(false);
     console.log(open);
     const handleDrawer = () => {
@@ -53,7 +54,9 @@ function TopNavBar() {
         loggedout(localStorage.getItem('user')).then(res => {
             localStorage.removeItem('usertoken')
         })
-       this.props.history.push('/')
+        localStorage.removeItem('usertoken');
+        history.push("/")
+
        
     }
     const loginRegLink = (

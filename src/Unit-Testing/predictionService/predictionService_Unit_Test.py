@@ -33,7 +33,7 @@ class TestPredictionServiceModule(unittest.TestCase):
 
 
 if __name__ == '__main__':
-   log_file = 'log_file.txt'
+   log_file = 'predictionServiceLogFile.txt'
    with open(log_file, "w") as f:
        runner = unittest.TextTestRunner(f)
        unittest.main(testRunner=runner)
