@@ -82,12 +82,41 @@ function TopNavBar() {
             </li>
         </ul>
     )
+
+    const sideBarDrawer  = (
+        <Drawer classes={{ paper: classes.root}}
+        anchor="left"
+        open={open}
+        onClose={() => setOpen(false)} >
+        <div className="nav__header">
+            <IconButton classes={{root: classes.backArrowClass }} onClick={handleDrawerClose }  edge="start" aria-label="menu">
+                <ArrowBackIcon />
+            </IconButton>
+            <h5 className="nav__bar-title">Dal LMS</h5>
+        </div>
+        <div className="nav__main">
+            <ul className="nav__main-items">
+                <li className="nav__main-item">
+                    <Link to="/dataprocessing">Data Processing</Link>
+                </li>
+                <li className="nav__main-item">
+                    <Link to="/predictionService">Prediction Service</Link>
+                </li>
+                <li className="nav__main-item">
+                    <Link to="/chatservice">Real Time Conversation</Link>
+                </li>
+            </ul>
+        </div>
+        </Drawer>
+    )
     return (
         <div>
             <Navbar bg="dark" variant="dark">
+            {   localStorage.usertoken ? (
                 <IconButton onClick={handleDrawer} color="inherit" edge="start" aria-label="menu">
                     <Menu />
                 </IconButton>
+            ): null }
                 <Link to="/">
                     <Navbar.Brand>Dal LMS</Navbar.Brand>
                 </Link>
@@ -98,30 +127,8 @@ function TopNavBar() {
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </Nav>
             </Navbar>
-             <Drawer classes={{ paper: classes.root}}
-             anchor="left"
-             open={open}
-             onClose={() => setOpen(false)} >
-             <div className="nav__header">
-                 <IconButton classes={{root: classes.backArrowClass }} onClick={handleDrawerClose }  edge="start" aria-label="menu">
-                     <ArrowBackIcon />
-                 </IconButton>
-                 <h5 className="nav__bar-title">Dal LMS</h5>
-             </div>
-             <div className="nav__main">
-                 <ul className="nav__main-items">
-                     <li className="nav__main-item">
-                         <Link to="/dataprocessing">Data Processing</Link>
-                     </li>
-                     <li className="nav__main-item">
-                         <Link to="/predictionService">Prediction Service</Link>
-                     </li>
-                     <li className="nav__main-item">
-                         <Link to="/chatservice">Real Time Conversation</Link>
-                     </li>
-                 </ul>
-             </div>
-         </Drawer>
+            {localStorage.usertoken ? sideBarDrawer : null }
+         
          </div>
         )
 }

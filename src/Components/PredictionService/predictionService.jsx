@@ -100,8 +100,15 @@ class PredictionService extends Component {
 
   submitHandler = (e) => {
     e.preventDefault()
-    const data = { "files": this.state.contents , "titles": this.state.titles, "username": "user" }
+    const user = localStorage.getItem('user')
+    const data = { "files": this.state.contents , "titles": this.state.titles, "username": user }
     this.sendCloudFunctionUploadRequest(data);
+    // if(localStorage.getItem('user') !== undefined) {
+
+    // } else {
+    //   const data = { "files": this.state.contents , "titles": this.state.titles, "username": "user" }
+    //   this.sendCloudFunctionUploadRequest(data);
+    // }
   }
 
   render() {
