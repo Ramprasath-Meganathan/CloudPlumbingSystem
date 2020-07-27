@@ -67,6 +67,7 @@ class Register extends Component {
                     <h2 className="h3 mb-3 font-weight-normal text-center">
                         Please Register
                                          </h2>
+
                     <div className="form-group">
                         <input type="text" className="form-control"
                             name="firstname"
