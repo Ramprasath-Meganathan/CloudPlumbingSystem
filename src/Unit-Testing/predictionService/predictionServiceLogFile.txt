@@ -1,0 +1,21 @@
+E.
+======================================================================
+ERROR: test_prediction_file_service (__main__.TestPredictionServiceModule)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "predictionService_Unit_Test.py", line 29, in test_prediction_file_service
+    response = req.json()
+  File "/home/sehgal/.local/lib/python3.8/site-packages/requests/models.py", line 826, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3/dist-packages/simplejson/__init__.py", line 518, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3/dist-packages/simplejson/decoder.py", line 370, in decode
+    obj, end = self.raw_decode(s)
+  File "/usr/lib/python3/dist-packages/simplejson/decoder.py", line 400, in raw_decode
+    return self.scan_once(s, idx=_w(s, idx).end())
+simplejson.errors.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+----------------------------------------------------------------------
+Ran 2 tests in 17.848s
+
+FAILED (errors=1)

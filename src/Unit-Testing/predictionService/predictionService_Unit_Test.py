@@ -3,7 +3,6 @@ import requests
 import os 
 import json 
 
-
 class TestPredictionServiceModule(unittest.TestCase):
 
     def test_upload_file_service(self):
