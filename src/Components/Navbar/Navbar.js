@@ -116,9 +116,14 @@ function TopNavBar() {
                 <IconButton onClick={handleDrawer} color="inherit" edge="start" aria-label="menu">
                     <Menu />
                 </IconButton> ) : null }
+                {userLoggedIn? 
+                    <Link to="/landing">
+                    <Navbar.Brand>Dal LMS</Navbar.Brand>
+                </Link>:
                 <Link to="/">
                     <Navbar.Brand>Dal LMS</Navbar.Brand>
-                </Link>              
+                </Link>    
+                }          
                 <Nav className="mr-auto">
                { userLoggedIn
                 ?
