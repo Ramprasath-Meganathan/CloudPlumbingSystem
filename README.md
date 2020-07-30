@@ -8,3 +8,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [3] Carlosaguayo, “Text Clustering with Unsupervised Learning,” 27-Mar-2019. [Online]. Available: https://www.kaggle.com/carlosaguayo/text-clustering-with-unsupervised-learning. [Accessed: 30-Jul-2020].
 
+[4] “lex-chat,” npm. [Online]. Available: https://www.npmjs.com/package/lex-chat. [Accessed: 30-Jul-2020].
+
