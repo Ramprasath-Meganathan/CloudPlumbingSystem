@@ -14,3 +14,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [6] “React Bootstrap,” react. [Online]. Available: https://react-bootstrap.github.io/. [Accessed: 30-Jul-2020].
 
+[7] "Assignment 2, Shivam Gupta", Serverless Data Processing, [Brightspace Online Document] 
+
+
