@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [7] S. Romal, "CSCI 5709 Web Development: Assignment 2." Dalhousie University, [online document], 2020. [Accessed 30-Jul-2020].
 
-[8] G. Shivam, "CSCI 5709 Serverless Data Processing: Assignment 2." Dalhousie University, [online document], 2020. [Accessed 30-Jul-2020].
+[8] G. Shivam, "CSCI 5410 Serverless Data Processing: Assignment 2." Dalhousie University, [online document], 2020. [Accessed 30-Jul-2020].
 
 [9] M. Hollands, “Amplify,” Amazon, 2015. [Online]. Available: https://docs.aws.amazon.com/amplify/. [Accessed: 30-Jul-2020].
 
