@@ -12,3 +12,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [5] “25.3. unittest - Unit testing framework.” [Online]. Available: https://docs.python.org/2/library/unittest.html. [Accessed: 29-Jul-2020].
 
+[6] “React Bootstrap,” react. [Online]. Available: https://react-bootstrap.github.io/. [Accessed: 30-Jul-2020].
+
