@@ -16,3 +16,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [7] S. Romal, "CSCI 5709 Web Development: Assignment 2." Dalhousie University, [online document], 2020. [Accessed 30-Jul-2020].
 
+[8] G. Shivam, "CSCI 5709 Serverless Data Processing: Assignment 2." Dalhousie University, [online document], 2020. [Accessed 30-Jul-2020].
+
