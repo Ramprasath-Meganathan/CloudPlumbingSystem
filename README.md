@@ -5,3 +5,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [1]"react-chat-window", npm, 2020. [Online]. Available: https://www.npmjs.com/package/react-chat-window. [Accessed: 30- Jul- 2020].
 
 [2]"How to build a React chat app with AWS API Gateway WebSockets, Custom Lambda Authorizer", Medium, 2020. [Online]. Available: https://codeburst.io/how-to-build-a-react-chat-app-with-aws-api-gateway-websockets-and-cognito-custom-authorizer-6f84f2da47ec. [Accessed: 30- Jul- 2020].
+
+[3] Carlosaguayo, “Text Clustering with Unsupervised Learning,” 27-Mar-2019. [Online]. Available: https://www.kaggle.com/carlosaguayo/text-clustering-with-unsupervised-learning. [Accessed: 30-Jul-2020].
+
