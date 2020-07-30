@@ -10,3 +10,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [4] “lex-chat,” npm. [Online]. Available: https://www.npmjs.com/package/lex-chat. [Accessed: 30-Jul-2020].
 
+[5] “25.3. unittest - Unit testing framework.” [Online]. Available: https://docs.python.org/2/library/unittest.html. [Accessed: 29-Jul-2020].
+
