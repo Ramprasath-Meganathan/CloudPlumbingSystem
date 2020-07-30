@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Amplify from 'aws-amplify';
 import { ChatBot } from 'aws-amplify-react';
-import LexChat from "./LexChatUIComponent"; 
-import "./onlineSupport.css"
+import LexChat from "lex-chat"; 
 
 Amplify.configure({
   Auth: {
