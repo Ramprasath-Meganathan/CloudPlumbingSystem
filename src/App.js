@@ -4,7 +4,6 @@ import './App.css';
 import TopNavBar from './Components/Navbar/Navbar'
 import Landing from './Components/LandingPage/Landing';
 import Login from './Components/Authentication/Login'
-import Profile from './Components/Profile'
 import Register from './Components//Register/Register'
 import FooterPage from './Components/Footer'
 import SecurityQuestions from './Components/Register/SecurityQuestions'
@@ -25,12 +24,10 @@ class App extends Component {
        <div style={{ paddingBottom: '150px'}} className="Container">
          <Route exact path="/register" component={Register}/>
          <Route exact path="/login" component={Login}/>
-         <Route exact path="/profile" component={Profile}/>
          <Route exact path="/securityquestions" component={SecurityQuestions}/>
          <Route exact path="/mfa2" component={MFA2}/>
          <Route exact path="/chatservice" component={chatPage}/>
-         <Route exact path="/landing" component={Landing}/>
-         
+         <Route exact path="/landing" component={Landing}/> 
          <Route exact path="/dataprocessing" component={DataProcessing}/>
          <Route exact path="/predictionService" component={PredictionService}/>
          <Route exact path="/onlinesupportpage" component={OnlineSupportPage}/>
