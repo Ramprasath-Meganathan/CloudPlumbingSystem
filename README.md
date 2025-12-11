@@ -1,7 +1,5 @@
 Masters project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## References:
 
 [1]"react-chat-window", npm, 2020. [Online]. Available: https://www.npmjs.com/package/react-chat-window. [Accessed: 30- Jul- 2020].
@@ -36,5 +34,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [16] - “wordcloud,” PyPI, 02-May-2020. [Online]. Available: https://pypi.org/project/wordcloud/. [Accessed: 30-Jul-2020]
 
-[17] - “Submission History - CSCI5410 - Serverless Data Processing (Sec 1) - 2020 Summer - Dalhousie University,” Brightspace.com, 2020. [Online]. Available: https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=74981&grpid=0&isprv=0&bp=0&ou=124063. [Accessed: 30-Jul-2020]
+[17] - “Submission History - CSCI5410 - Serverless Data Processing (Sec 1) - 2020  - Dalhousie University,” Brightspace.com, 2020. [Online]. Available: https://dal.brightspace.com/d2l/lms/dropbox/user/folders_history.d2l?db=74981&grpid=0&isprv=0&bp=0&ou=124063. [Accessed: 30-Jul-2020]
 
